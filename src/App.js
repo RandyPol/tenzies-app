@@ -3,21 +3,20 @@ import './App.css'
 import Dice from './components/Dice'
 
 function App() {
-  const [diceList, setDiceList] = React.useState(() => [])
+  const [diceList, setDiceList] = React.useState(() => allNewDice())
 
-  React.useEffect(() => setDiceList(allNewDice()), [])
-
-  const allNewDice = () => {
+  function allNewDice() {
     const listOfDice = [...Array(10).keys()].map((id) => {
       return Math.floor(Math.random() * 7)
     })
     return listOfDice
   }
-
+  const reRoll = () => setDiceList(allNewDice())
+  
   const diceGroup = diceList.map((item, index) => (
     <Dice key={index} num={item} />
   ))
-  
+
   return (
     <main className="container">
       <h1 className="container--title">Tenzies</h1>
@@ -26,7 +25,9 @@ function App() {
         current value between rolls.
       </p>
       <div className="container--keys">{diceGroup}</div>
-      <button className="container--button">Roll</button>
+      <button className="container--button" onClick={reRoll}>
+        Roll
+      </button>
     </main>
   )
 }
