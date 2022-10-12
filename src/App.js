@@ -7,14 +7,19 @@ function App() {
 
   function allNewDice() {
     const listOfDice = [...Array(10).keys()].map((id) => {
-      return Math.floor(Math.random() * 7)
+      const num = Math.floor(Math.random() * 7)
+      return {
+        id,
+        value: num,
+        isHeld: false,
+      }
     })
     return listOfDice
   }
   const reRoll = () => setDiceList(allNewDice())
-  
-  const diceGroup = diceList.map((item, index) => (
-    <Dice key={index} num={item} />
+
+  const diceGroup = diceList.map((dice) => (
+    <Dice key={dice.id} num={dice.value} />
   ))
 
   return (
