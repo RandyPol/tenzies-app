@@ -35,6 +35,9 @@
   column-gap: 20px;
   row-gap: 20px;
   /* background-color: #4a4e74; */
+  font-family: 'Karla';
+  font-weight: 700;
+  color: #2b283a;
 }
 
 .diceNum {
@@ -51,10 +54,17 @@
   /* background: #59e391; */
 }
 
-.diceNum h2 {
-  font-family: 'Karla';
-  font-weight: 700;
-  color: #2b283a;
+.isHeld {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 3.81277px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  cursor: pointer;
+  background: #59e391;
 }
 
 .container--button {

@@ -18,8 +18,20 @@ function App() {
   }
   const reRoll = () => setDiceList(allNewDice())
 
+  const updateIsHeld = (diceId) => {
+    setDiceList((prev) => {
+      return prev.map((dice) => {
+        return dice.id !== diceId ? dice : { ...dice, isHeld: !dice.isHeld }
+      })
+    })
+  }
+
   const diceGroup = diceList.map((dice) => (
-    <Dice key={dice.id} num={dice.value} />
+    <Dice
+      key={dice.id}
+      dice={dice}
+      updateIsHeld={() => updateIsHeld(dice.id)}
+    />
   ))
 
   return (
