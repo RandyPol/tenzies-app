@@ -32,8 +32,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, auto);
-  column-gap: 10px;
-  row-gap: 10px;
+  column-gap: 20px;
+  row-gap: 20px;
   /* background-color: #4a4e74; */
 }
 
@@ -47,6 +47,7 @@
   height: 35px;
   text-align: center;
   background: #ffffff;
+  cursor: pointer;
   /* background: #59e391; */
 }
 
@@ -66,4 +67,5 @@
   background: #5035ff;
   box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
   border-radius: 3.81277px;
+  cursor: pointer;
 }
