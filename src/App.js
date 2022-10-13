@@ -35,7 +35,12 @@ function App() {
     })
     return listOfDice
   }
+
   const reRoll = () => {
+    if (tenzies) {
+      setDiceList(allNewDice())
+      setTenZies(false)
+    }
     setDiceList((prev) => {
       return prev.map((dice) => (dice.isHeld ? dice : singleDieGenerator()))
     })
@@ -65,9 +70,16 @@ function App() {
         current value between rolls.
       </p>
       <div className="container--keys">{diceGroup}</div>
-      <button className="container--button" onClick={reRoll}>
-        Roll
-      </button>
+      {!tenzies && (
+        <button className="container--button" onClick={reRoll}>
+          Roll
+        </button>
+      )}
+      {tenzies && (
+        <button className="container--button-NewGame" onClick={reRoll}>
+          New Game
+        </button>
+      )}
     </main>
   )
 }

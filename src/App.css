@@ -86,3 +86,23 @@
 .container--button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
+
+.container--button-NewGame {
+  font-family: 'Karla';
+  font-weight: 700;
+  font-size: 16.384px;
+  line-height: 19px;
+  color: #ffffff;
+  margin-top: 20px;
+  background: #0a9959;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  cursor: pointer;
+  height: 40px;
+  width: 100px;
+  border: none;
+}
+
+.container--button-NewGame {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
