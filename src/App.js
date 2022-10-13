@@ -72,16 +72,13 @@ function App() {
         current value between rolls.
       </p>
       <div className="container--keys">{diceGroup}</div>
-      {!tenzies && (
-        <button className="container--button" onClick={reRoll}>
-          Roll
-        </button>
-      )}
-      {tenzies && (
-        <button className="container--button-NewGame" onClick={reRoll}>
-          New Game
-        </button>
-      )}
+
+      <button
+        className={tenzies ? 'container--button-NewGame' : 'container--button'}
+        onClick={reRoll}
+      >
+        {tenzies ? 'New Game' : 'Roll'}
+      </button>
     </main>
   )
 }
