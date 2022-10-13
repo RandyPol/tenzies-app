@@ -6,8 +6,14 @@ import Dice from './components/Dice'
 function App() {
   const [diceList, setDiceList] = React.useState(() => allNewDice())
 
-  function allNewDice(total) {
-    const listOfDice = [...Array(total || 10).keys()].map(() => {
+  const singleDieGenerator = () => ({
+    id: nanoid(),
+    value: Math.floor(Math.random() * 7),
+    isHeld: false,
+  })
+
+  function allNewDice() {
+    const listOfDice = [...Array(10).keys()].map(() => {
       const num = Math.floor(Math.random() * 7)
       return {
         id: nanoid(),
@@ -17,12 +23,11 @@ function App() {
     })
     return listOfDice
   }
-  const reRoll = () =>
+  const reRoll = () => {
     setDiceList((prev) => {
-      const isHeldTrue = prev.filter((dice) => dice.isHeld)
-      console.log(isHeldTrue.length)
-      return isHeldTrue.concat(allNewDice(10 - isHeldTrue.length))
+      return prev.map((dice) => (dice.isHeld ? dice : singleDieGenerator()))
     })
+  }
 
   const updateIsHeld = (diceId) => {
     setDiceList((prev) => {
