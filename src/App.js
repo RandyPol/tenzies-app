@@ -9,13 +9,9 @@ function App() {
 
   React.useEffect(() => {
     const allHeld = diceList.every((dice) => dice.isHeld === true)
-    console.log(allHeld)
-    const allSame = diceList.reduce((previous, current) => {
-      console.log("Previous: ",previous.value)
-      console.log("Current: ",current.value)
-      return current.value === previous.value? previous: 0
-    })
-    // console.log(allSame)
+    const valueCompare = diceList[0].value
+    const allSame = diceList.every((dice) => dice.value === valueCompare)
+
     if (allHeld && allSame) {
       setTenZies((prev) => !prev)
       console.log('You won')
