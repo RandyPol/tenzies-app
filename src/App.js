@@ -5,10 +5,23 @@ import Dice from './components/Dice'
 
 function App() {
   const [diceList, setDiceList] = React.useState(() => allNewDice())
+  const [tenzies, setTenZies] = React.useState(false)
 
   React.useEffect(() => {
-    console.log('Dice state changed')
+    const allHeld = diceList.every((dice) => dice.isHeld === true)
+    console.log(allHeld)
+    const allSame = diceList.reduce((previous, current) => {
+      console.log("Previous: ",previous.value)
+      console.log("Current: ",current.value)
+      return current.value === previous.value? previous: 0
+    })
+    // console.log(allSame)
+    if (allHeld && allSame) {
+      setTenZies((prev) => !prev)
+      console.log('You won')
+    }
   }, [diceList])
+
   const singleDieGenerator = () => ({
     id: nanoid(),
     value: Math.floor(Math.random() * 7),
