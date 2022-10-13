@@ -6,6 +6,9 @@ import Dice from './components/Dice'
 function App() {
   const [diceList, setDiceList] = React.useState(() => allNewDice())
 
+  React.useEffect(() => {
+    console.log('Dice state changed')
+  }, [diceList])
   const singleDieGenerator = () => ({
     id: nanoid(),
     value: Math.floor(Math.random() * 7),
