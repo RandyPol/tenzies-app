@@ -1,22 +1,28 @@
 import React from 'react'
 import './App.css'
+import { nanoid } from 'nanoid'
 import Dice from './components/Dice'
 
 function App() {
   const [diceList, setDiceList] = React.useState(() => allNewDice())
 
-  function allNewDice() {
-    const listOfDice = [...Array(10).keys()].map((id) => {
+  function allNewDice(total) {
+    const listOfDice = [...Array(total || 10).keys()].map(() => {
       const num = Math.floor(Math.random() * 7)
       return {
-        id,
+        id: nanoid(),
         value: num,
         isHeld: false,
       }
     })
     return listOfDice
   }
-  const reRoll = () => setDiceList(allNewDice())
+  const reRoll = () =>
+    setDiceList((prev) => {
+      const isHeldTrue = prev.filter((dice) => dice.isHeld)
+      console.log(isHeldTrue.length)
+      return isHeldTrue.concat(allNewDice(10 - isHeldTrue.length))
+    })
 
   const updateIsHeld = (diceId) => {
     setDiceList((prev) => {
